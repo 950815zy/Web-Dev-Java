@@ -1,6 +1,7 @@
 package com.itlize.project2.Service;
 import com.itlize.project2.DAO.UserDAO;
-import com.itlize.project2.Entity.User;
+import com.itlize.project2.Entity.Product;
+import com.itlize.project2.Entity.UserDTO;
 import java.util.List;
 import java.io.*;
 import java.util.Date;
@@ -41,9 +42,37 @@ public class UserService {
 
 	@Autowired
 	UserDAO userDAO;
-	
-	public User getbyUser(String uname) {
-		return userDAO.get(uname);
+//	
+	public UserDTO getbyUser(Integer uid) {
+		return userDAO.getUserbyId(uid);
 	}
 	
+	public Product getbyProduct(Integer pid) {
+		return userDAO.getProdbyId(pid);
+	}
+////	
+//	public UserDTO signUp(UserDTO u) {
+//		if (userDAO.getUserbyId(u.getUid()) != null) {
+//			System.out.println("Username exists.");
+//		}
+//		else{
+//			userDAO.add(u.getUsername(),u.getPassword());
+//			System.out.println("a new user added..");
+//		}
+//		return u;
+//	}
+////	
+////	public User verification(String uname, String pass) {
+////        if(userDAO.getUserbyId(uname) != null && userDAO.getUserbyId(uname).getPassword().equals(pass)){
+////            System.out.println("a login accepted..");
+////		}
+////		else{
+////			System.out.println("a login denied..");
+////		}
+////		return userDAO.getUserbyId(uname);
+////	}
+//
+	public UserDTO add(Integer pid, Integer uid) {
+		return userDAO.add2(pid,uid);
+	}
 }
